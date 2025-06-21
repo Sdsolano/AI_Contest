@@ -157,7 +157,7 @@ def display_images(images, digit):
             img_pil = Image.fromarray((img * 255).astype(np.uint8))
             img_pil = img_pil.resize((112, 112), Image.NEAREST)  # Upscale for better visibility
             
-            st.image(img_pil, caption=f"Generated {digit} #{i+1}", use_column_width=True)
+            st.image(img_pil, caption=f"Generated {digit} #{i+1}", use_container_width=True)
 
 # Main app
 def main():
@@ -179,24 +179,8 @@ def main():
     # Digit selection
     st.markdown("### Select a digit to generate:")
     
-    # Create digit selection buttons
-    cols = st.columns(10)
-    selected_digit = None
-    
-    for i in range(10):
-        with cols[i]:
-            if st.button(str(i), key=f"digit_{i}", use_container_width=True):
-                selected_digit = i
-    
-    # Alternative: Selectbox for digit selection
-    st.markdown("**Or use the dropdown:**")
-    dropdown_digit = st.selectbox("Choose digit:", list(range(10)), key="dropdown")
-    
-    # Use button selection if available, otherwise use dropdown
-    if selected_digit is not None:
-        digit_to_generate = selected_digit
-    else:
-        digit_to_generate = dropdown_digit
+    # Selectbox for digit selection
+    digit_to_generate = st.selectbox("Choose digit:", list(range(10)), key="dropdown")
     
     st.markdown(f"**Selected digit: {digit_to_generate}**")
     
