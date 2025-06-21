@@ -95,7 +95,7 @@ def load_model():
         if not model_loaded:
             try:
                 # Replace with your actual Google Drive file ID
-                file_id = "YOUR_GOOGLE_DRIVE_FILE_ID"
+                file_id = "1DiiPY1flp8fyPB1xoRerYt_ILlBgjo1F"
                 url = f"https://drive.google.com/uc?id={file_id}"
                 
                 # Download model
